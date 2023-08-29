@@ -8,7 +8,7 @@
                 type: DirectoryOrCreate
         {{- end }}
         containers:
-            - name: {{ .Release.Name }}
+            - name: {{ .Values.rclone.action }}
               image: {{ .Values.image }}
               command:
                 - rclone
