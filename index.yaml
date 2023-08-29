@@ -3,7 +3,17 @@ entries:
   techio-rclone:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-08-30T01:55:14.348254+07:00"
+    created: "2023-08-30T02:27:07.736754+07:00"
+    description: A Helm chart for rclone
+    digest: 73d2d369420a1e9c15e1f17866f1473c5276481abbe6676ed2a32c28abe562ab
+    name: techio-rclone
+    type: application
+    urls:
+    - https://techio.dev/techio/helm/techio-rclone-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-08-30T02:27:07.736528+07:00"
     description: A Helm chart for rclone
     digest: b853c16c9fbbca35947e140fe08802f06aa8448f81ba4386d0b32a0acf5d2e04
     name: techio-rclone
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://techio.dev/techio/helm/techio-rclone-0.1.0.tgz
     version: 0.1.0
-generated: "2023-08-30T01:55:14.347428+07:00"
+generated: "2023-08-30T02:27:07.735823+07:00"
