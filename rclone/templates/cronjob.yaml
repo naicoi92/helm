@@ -1,0 +1,14 @@
+{{- if .Values.cronjob.enable }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  schedule: {{ .Values.cronjob.schedule }}
+  concurrencyPolicy: Replace
+  suspend: {{ .Values.rclone.suspend }}
+  jobTemplate:
+    spec:
+      template:
+        {{- template "template.spec" }}
+{{- end }}

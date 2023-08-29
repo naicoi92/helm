@@ -1,0 +1,10 @@
+{{- if not .Values.cronjob.enable }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  suspend: {{ .Values.rclone.suspend }}
+  template:
+  {{- template "template.spec" }}
+{{- end }}
