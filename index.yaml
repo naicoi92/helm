@@ -3,7 +3,7 @@ entries:
   techio-rclone:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-09-06T18:43:47.311893+07:00"
+    created: "2023-09-06T21:08:54.325166+07:00"
     description: A Helm chart for rclone
     digest: 4c2d9e8cb896f8cd97dd629cf407e730925ff7933d4807cfe95b6bee1c71dade
     name: techio-rclone
@@ -14,7 +14,17 @@ entries:
   techio-wordpress:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-09-06T18:43:47.312077+07:00"
+    created: "2023-09-06T21:08:54.325749+07:00"
+    description: A Helm chart for Wordpress
+    digest: b1204b8db40046fab97d3dc747ce1590ac091775d1c5b8ebc53696f766129981
+    name: techio-wordpress
+    type: application
+    urls:
+    - https://techio.dev/techio/helm/techio-wordpress-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-09-06T21:08:54.325554+07:00"
     description: A Helm chart for Wordpress
     digest: 5fd666f25977d4a05a5bd4fb4f755303e78c0957ead72b90a5c72556f2fd5c03
     name: techio-wordpress
@@ -22,4 +32,4 @@ entries:
     urls:
     - https://techio.dev/techio/helm/techio-wordpress-0.3.1.tgz
     version: 0.3.1
-generated: "2023-09-06T18:43:47.310732+07:00"
+generated: "2023-09-06T21:08:54.324551+07:00"
