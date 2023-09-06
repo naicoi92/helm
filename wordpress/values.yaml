@@ -7,7 +7,7 @@ password: random_password_32_chars # change at first time only
 debug: false # true for debug
 domain: true # true for multi domain at same time
 update: false # true for auto update wordpress core
-storage: '1000000000' # capacity for sql + wordpress (1M = 1000000, 1G = 1000000000)
+storage: 1Gi # capacity for sql + wordpress
 
 addon:
   ioncube: false # true for ioncube addon
