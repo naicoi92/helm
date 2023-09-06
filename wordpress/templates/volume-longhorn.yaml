@@ -1,8 +1,8 @@
 apiVersion: longhorn.io/v1beta2
 kind: Volume
 metadata:
-  name: {{ .Release.Name }}
+  name: "{{ .Release.Name }}"
   namespace: longhorn-system
 spec:
   frontend: blockdev
-  size: {{ .Values.storage }}
+  size: "{{ .Values.storage }}"
