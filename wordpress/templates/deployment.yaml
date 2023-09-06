@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      restartPolicy: Always
+      volumes:
+        - name: cfg
+          configMap:
+            name: {{ .Release.Name }}-cfg
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-claim
+        - name: socket-sql
+          emptyDir: {}
+        - name: socket-php
+          emptyDir: {}
+      containers:
+        - name: web
+          image: {{ .Values.addon.image.web }}
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: cfg
+              mountPath: /etc/caddy/Caddyfile
+              subPath: Caddyfile
+            - name: data
+              mountPath: /var/www/html
+              subPath: web
+            - name: socket-php
+              mountPath: /run/php
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+        - name: wordpress
+          {{ if .Values.addon.ioncube }}
+          image: {{ .Values.addon.image.ioncube }}
+          {{ else }}
+          image: {{ .Values.addon.image.wordpress }}
+          {{ end }}
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: data
+              mountPath: /var/www/html
+              subPath: web
+            - name: socket-sql
+              mountPath: /run/mysqld
+            - name: socket-php
+              mountPath: /run/php
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-web
+        - name: database
+          image: {{ .Values.addon.image.database }}
+          args: ["--skip-log-bin"]
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+              subPath: sql
+            - name: socket-sql
+              mountPath: /run/mysqld
+          envFrom:
+            - secretRef:
+                name: {{ .Release.Name }}-sql
+  strategy:
+    type: Recreate

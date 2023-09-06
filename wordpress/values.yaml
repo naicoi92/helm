@@ -1,0 +1,18 @@
+# Default values for wordpress.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# core - need restart deployment
+password: random_password_32_chars # change at first time only
+debug: false # true for debug
+domain: true # true for multi domain at same time
+update: false # true for auto update wordpress core
+storage: "1000000000" # capacity for sql + wordpress (1M = 1000000, 1G = 1000000000)
+
+addon:
+  ioncube: false # true for ioncube addon
+  image:
+    web: "caddy:alpine"
+    database: "mariadb:10.7"
+    wordpress: "oci.func.codes/library/wordpress:alpine"
+    ioncube: "oci.func.codes/library/wordpress:alpine-ioncube"
