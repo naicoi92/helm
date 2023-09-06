@@ -1,5 +1,5 @@
 apiVersion: v2
-name: wordpress
+name: techio-wordpress
 description: A Helm chart for Wordpress
 
 # A chart can be either an 'application' or a 'library' chart.
