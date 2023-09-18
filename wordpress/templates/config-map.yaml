@@ -4,12 +4,8 @@ metadata:
   name: {{ .Release.Name }}-cfg
 data:
   # property-like keys; each key maps to a simple value
-  Caddyfile: |
-    :80 {
-      root * /var/www/html
-      php_fastcgi unix//run/php/php-fpm.sock {
-        trusted_proxies 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8 127.0.0.1/8 fd00::/8 ::1
-      }
-      encode gzip
-      file_server
-    }
+  php.ini: |
+    upload_max_filesize = 1024M
+    post_max_size = 1024M
+    max_execution_time = 3600
+    max_input_vars = 3000

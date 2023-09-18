@@ -7,12 +7,10 @@ password: random_password_32_chars # change at first time only
 debug: false # true for debug
 domain: true # true for multi domain at same time
 update: false # true for auto update wordpress core
-storage: 1Gi # capacity for sql + wordpress
+public: false # true for create public port
+storage: 2Gi # capacity for sql + wordpress
 
-addon:
-  ioncube: false # true for ioncube addon
-  image:
-    web: "caddy:alpine"
-    database: "mariadb:11.1"
-    wordpress: "lttech/wordpress:php8.2-alpine"
-    ioncube: "oci.func.codes/library/wordpress:alpine-ioncube"
+image:
+  database: "mariadb:11.1"
+  wordpress: "lttech/wordpress:php8.0"
+  # ioncube image : oci.func.codes/library/wordpress:alpine-ioncube
