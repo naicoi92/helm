@@ -13,6 +13,6 @@ addon:
   ioncube: false # true for ioncube addon
   image:
     web: "caddy:alpine"
-    database: "mariadb:10.7"
-    wordpress: "lttech/wordpress:6.1.1"
+    database: "mariadb:11.1"
+    wordpress: "lttech/wordpress:php8.2-alpine"
     ioncube: "oci.func.codes/library/wordpress:alpine-ioncube"
