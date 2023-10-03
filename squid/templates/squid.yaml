@@ -2,16 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: squid-{{ .Release.Name }}
-  labels:
-    workload.user.cattle.io/workloadselector: apps.deployment-squid-{{ .Release.Name }}
 spec:
   selector:
     matchLabels:
-      workload.user.cattle.io/workloadselector: apps.deployment-squid-{{ .Release.Name }}
+      app: squid-{{ .Release.Name }}
   template:
     metadata:
       labels:
-        workload.user.cattle.io/workloadselector: apps.deployment-squid-{{ .Release.Name }}
+        app: squid-{{ .Release.Name }}
     spec:
       containers:
       - imagePullPolicy: Always
@@ -19,10 +17,8 @@ spec:
         image: ubuntu/squid
         ports:
         - name: squid
-          expose: true
           protocol: TCP
           containerPort: 3128
-          _serviceType: NodePort
         readinessProbe:
           failureThreshold: 3
           successThreshold: 1
