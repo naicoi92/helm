@@ -1,0 +1,4 @@
+Image: techio.dev/prisma/engine:5.4.2
+ConfigMap: henull511
+Secret: henull
+Replicas: 1

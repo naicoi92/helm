@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.Replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: prisma-engine
+          image: {{ .Values.Image }}
+          ports:
+            - containerPort: 8888
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.ConfigMap }}
+            - secretRef:
+                name: {{ .Values.Secret }}
+          imagePullPolicy: Always
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: techio-deploy
