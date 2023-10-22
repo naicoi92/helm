@@ -8,5 +8,6 @@ spec:
       port: 8888
       targetPort: 8888
   selector:
-    app: {{ .Release.Name}}
+    app: {{ .Release.Name }}
+    statefulset.kubernetes.io/pod-name: {{ .Release.Name }}-0
   type: ClusterIP
