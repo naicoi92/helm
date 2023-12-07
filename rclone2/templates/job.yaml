@@ -1,0 +1,40 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rclone-{{ .Release.Name }}
+spec:
+  suspend: {{ .Values.rclone.suspend }}
+  template:
+    spec:
+        containers:
+            - name: {{ .Values.rclone.action }}
+              image: {{ .Values.image }}
+              command:
+                - rclone
+                - {{ .Values.rclone.action }}
+                {{- if not .Values.rclone.debug }}
+                - '-vv'
+                {{- end }}
+                - {{ .Values.rclone.from }}
+                - {{ .Values.rclone.to }}
+              env:
+                {{- range $name, $storage := .Values.storages }}
+                {{- range $key, $value := $storage }}
+                - name: RCLONE_CONFIG_{{ $name }}_{{ $key }}
+                  value: {{ $value | quote }}
+                {{- end }}
+                {{- end }}
+                {{- if not .Values.rclone.debug }}
+                - name: RCLONE_FAST_LIST
+                  value: 'true'
+                {{- end }}
+                - name: RCLONE_DELETE_BEFORE
+                  value: 'true'
+                - name: RCLONE_PROGRESS
+                  value: 'true'
+                - name: RCLONE_TRANSFERS
+                  value: {{ .Values.options.transfers | quote }}
+                - name: RCLONE_CHECKERS
+                  value: {{ .Values.options.checkers | quote }}
+              imagePullPolicy: Always
+        restartPolicy: Never
