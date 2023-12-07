@@ -15,8 +15,8 @@ spec:
                 {{- if not .Values.rclone.debug }}
                 - '-vv'
                 {{- end }}
-                - {{ .Values.rclone.from }}
-                - {{ .Values.rclone.to }}
+                - {{ .Values.rclone.from | quote }}
+                - {{ .Values.rclone.to | quote }}
               env:
                 {{- range $name, $storage := .Values.storages }}
                 {{- range $key, $value := $storage }}
