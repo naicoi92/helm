@@ -21,8 +21,7 @@ storages:
     type: drive
     clientId: "403894536133-lt4bj7ue1mtevehip55dm92ud8es7umq.apps.googleusercontent.com"
     secret: "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"
-    token: >-
-      {"access_token":"","token_type":"Bearer","refresh_token":"","expiry":"2023-08-04T18:32:56.529694+07:00"}
+    token: '{"access_token":"","token_type":"Bearer","refresh_token":"","expiry":"2023-08-04T18:32:56.529694+07:00"}'
     teamDrive: ""
   nas:
     type: smb
