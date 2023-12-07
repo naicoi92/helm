@@ -8,7 +8,7 @@ spec:
     spec:
         containers:
             - name: {{ .Values.rclone.action }}
-              image: {{ .Values.image }}
+              image: {{ .Values.image | quote }}
               command:
                 - rclone
                 - {{ .Values.rclone.action }}
@@ -20,7 +20,7 @@ spec:
               env:
                 {{- range $name, $storage := .Values.storages }}
                 {{- range $key, $value := $storage }}
-                - name: RCLONE_CONFIG_{{ $name }}_{{ $key }}
+                - name: RCLONE_CONFIG_{{ upper $name }}_{{ upper $key }}
                   value: {{ $value | quote }}
                 {{- end }}
                 {{- end }}
