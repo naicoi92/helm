@@ -1,0 +1,26 @@
+image: rclone/rclone
+options:
+  checkers: 4
+  fastlist: true
+  transfers: 8
+rclone:
+  action: sync
+  debug: true
+  from: "business2:"
+  suspend: false
+  to: nas:business2
+storages:
+  google:
+    client_id: 403894536133-lt4bj7ue1mtevehip55dm92ud8es7umq.apps.googleusercontent.com
+    client_secret: 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
+    token: >-
+      {"access_token":"","token_type":"Bearer","refresh_token":"1//0gO3QGbLL5EJxCgYIARAAGBASNwF-L9Ir5fDw_D6cJtmfLuztlvCpsS9gs8kJBr3497gOf8k9g6cWOIvvafoOWzI99fgy9eaNHtI","expiry":"2023-12-08T01:57:30.422753+07:00"}
+    type: drive
+  business2:
+    type: alias
+    remote: "google,team_drive=0AB_FCmamRETVUk9PVA,root_folder_id=:"
+  nas:
+    host: 10.10.10.184
+    pass: YTR6bCSuM97FTOojrg0tFlNdMuaTXLCJ9ZRn8T393dbArYzvZelyrQ
+    type: smb
+    user: rclone

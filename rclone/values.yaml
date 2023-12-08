@@ -1,49 +1,36 @@
-# Default values for job.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 image: rclone/rclone
-
-rclone:
-  action: "sync" # copy or sync
-  debug: true
-  suspend: false
-  from: google
-  to: local
-
-cronjob:
-  enable: false
-  schedule: "0 0 * * *"
-
 options:
-  checkers: 8
-  transfers: 4
+  checkers: 4
   fastlist: true
+  transfers: 8
+rclone:
+  action: sync
+  debug: true
+  from: "gdrive:"
+  suspend: false
+  to: nas:folder
+storages:
+  google:
+    type: drive
+    token: >-
+      {"access_token":"","token_type":"Bearer","refresh_token":"","expiry":"2023-12-08T01:57:30.422753+07:00"}
+    client_id: "403894536133-lt4bj7ue1mtevehip55dm92ud8es7umq.apps.googleusercontent.com"
+    client_secret: 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
+  gdrive:
+    type: alias
+    remote: "google,team_drive=team_id,root_folder_id=:"
+  nas:
+    type: smb
+    host: 10.10.10.184
+    user: rclone
+    pass: 
+  onedrive:
+    type: onedrive
+    token: >-
+      {"access_token":"","token_type":"Bearer","refresh_token":"","expiry":"2023-08-10T16:18:37.897777+07:00"}
+    drive_id:
+    drive_type: business
+    client_id: "c033ac28-0f63-4824-871b-b3a1c6fc8ddc"
+    client_secret: "Yoq8Q~oGnCIDvVPIjT~cBhaoEiDPTaejeMOP2dh-"
 
-google:
-  teamDrive: ""
-  refreshToken: ""
-  custom:
-    enable: true
-    clientId: "403894536133-lt4bj7ue1mtevehip55dm92ud8es7umq.apps.googleusercontent.com"
-    secret: "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"
 
-onedrive:
-  driveId: ""
-  driveType: "business"
-  refreshToken: ""
-  custom:
-    enable: true
-    clientId: "c033ac28-0f63-4824-871b-b3a1c6fc8ddc"
-    secret: "Yoq8Q~oGnCIDvVPIjT~cBhaoEiDPTaejeMOP2dh-"
-
-s3:
-  endpoint: "g0y2.or2.idrivee2-60.com"
-  key: ""
-  secret: ""
-  bucket: ""
-  path: "/"
-
-local:
-  path: "/dir"
-  drive: "/mnt/md0/drive"

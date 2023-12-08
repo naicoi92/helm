@@ -1,35 +1,18 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ .Release.Name }}
+  name: cfgmap-{{ .Release.Name }}
 data:
-  RCLONE_CONFIG_GOOGLE_TYPE: drive
-  RCLONE_CONFIG_GOOGLE_TEAM_DRIVE: {{ .Values.google.teamDrive }}
-  RCLONE_CONFIG_GOOGLE_TOKEN: >-
-    {"access_token":"","token_type":"Bearer","refresh_token":"{{ .Values.google.refreshToken }}","expiry":"2023-08-04T18:32:56.529694+07:00"}
-  {{- if .Values.google.custom.enable }}
-  RCLONE_CONFIG_GOOGLE_CLIENT_ID: {{ .Values.google.custom.clientId }}
-  RCLONE_CONFIG_GOOGLE_CLIENT_SECRET: {{ .Values.google.custom.secret }}
+  {{- range $name, $storage := .Values.storages }}
+  {{- range $key, $value := $storage }}
+  RCLONE_CONFIG_{{ upper $name }}_{{ upper $key }} : {{ $value | quote }}
   {{- end }}
-  RCLONE_CONFIG_ONEDRIVE_TYPE: onedrive
-  RCLONE_CONFIG_ONEDRIVE_DRIVE_ID: {{ .Values.onedrive.driveId }}
-  RCLONE_CONFIG_ONEDRIVE_DRIVE_TYPE: {{ .Values.onedrive.driveType }}
-  RCLONE_CONFIG_ONEDRIVE_TOKEN: >-
-    {"access_token":"","token_type":"Bearer","refresh_token":"{{ .Values.onedrive.refreshToken }}","expiry":"2023-08-10T16:18:37.897777+07:00"}
-  {{- if .Values.onedrive.custom.enable }}
-  RCLONE_CONFIG_ONEDRIVE_CLIENT_ID: {{ .Values.onedrive.custom.clientId }}
-  RCLONE_CONFIG_ONEDRIVE_CLIENT_SECRET: {{ .Values.onedrive.custom.secret }}
   {{- end }}
-  RCLONE_CONFIG_S3_TYPE: s3
-  RCLONE_CONFIG_S3_PROVIDER: Other
-  RCLONE_CONFIG_S3_ENDPOINT: {{ .Values.s3.endpoint }}
-  RCLONE_CONFIG_S3_ACCESS_KEY_ID: {{ .Values.s3.key }}
-  RCLONE_CONFIG_S3_SECRET_ACCESS_KEY: {{ .Values.s3.secret }}
   {{- if .Values.options.fastlist }}
   RCLONE_FAST_LIST: "true"
   {{- end }}
-  RCLONE_TRANSFERS: "{{ .Values.options.transfers }}"
-  RCLONE_CHECKERS: "{{ .Values.options.checkers }}"
+  RCLONE_TRANSFERS: {{ .Values.options.transfers | quote }}
+  RCLONE_CHECKERS: {{ .Values.options.checkers | quote }}
   RCLONE_DELETE_BEFORE: "true"
   RCLONE_DRIVE_ACKNOWLEDGE_ABUSE: "true"
   RCLONE_DRIVE_CHUNK_SIZE: 128M
