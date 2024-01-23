@@ -5,6 +5,11 @@ metadata:
 spec:
   capacity:
     storage: {{ .Values.storage }}
-  volumeMode: Filesystem
+  hostPath:
+    path: /wordpress/{{ .Release.Name }}
+    type: DirectoryOrCreate
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  volumeMode: Filesystem

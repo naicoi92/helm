@@ -5,8 +5,9 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  volumeMode: Filesystem
-  volumeName: {{ .Release.Name }}
   resources:
     requests:
       storage: {{ .Values.storage }}
+  volumeName: {{ .Release.Name }}
+  storageClassName: local-path
+  volumeMode: Filesystem
