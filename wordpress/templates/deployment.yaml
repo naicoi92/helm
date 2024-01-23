@@ -20,7 +20,7 @@ spec:
             claimName: {{ .Release.Name }}
       containers:
         - name: wordpress
-          image: dunglas/frankenphp:latest-alpine
+          image: lttech/frankenphp
           imagePullPolicy: Always
           ports:
             - name: http
