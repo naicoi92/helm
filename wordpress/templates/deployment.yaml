@@ -15,32 +15,26 @@ spec:
     spec:
       restartPolicy: Always
       volumes:
-        - name: cfg
-          configMap:
-            name: {{ .Release.Name }}-cfg
         - name: data
           persistentVolumeClaim:
             claimName: {{ .Release.Name }}
       containers:
         - name: wordpress
-          image: {{ .Values.image.wordpress }}
+          image: dunglas/frankenphp:latest-alpine
           imagePullPolicy: Always
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
           volumeMounts:
-            - name: cfg
-              mountPath: /usr/local/etc/php/conf.d/user.ini
-              subPath: php.ini
             - name: data
               mountPath: /var/www/html
               subPath: web
           envFrom:
             - secretRef:
-                name: {{ .Release.Name }}-web
+                name: {{ .Release.Name }}
         - name: database
-          image: {{ .Values.image.database }}
+          image: mariadb:11.1
           args: ["--skip-log-bin"]
           imagePullPolicy: IfNotPresent
           volumeMounts:
@@ -49,6 +43,6 @@ spec:
               subPath: sql
           envFrom:
             - secretRef:
-                name: {{ .Release.Name }}-sql
+                name: {{ .Release.Name }}
   strategy:
     type: Recreate
