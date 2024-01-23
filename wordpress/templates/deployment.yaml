@@ -4,6 +4,10 @@ metadata:
   name: {{ .Release.Name }}
   labels:
     app: {{ .Release.Name }}
+  labels:
+    io.portainer.kubernetes.application.name: {{ .Release.Name }}
+    io.portainer.kubernetes.application.owner: admin
+    io.portainer.kubernetes.application.stack: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
@@ -12,6 +16,7 @@ spec:
     metadata:
       labels:
         app: {{ .Release.Name }}
+        io.portainer.kubernetes.application.name: {{ .Release.Name }}
     spec:
       restartPolicy: Always
       volumes:

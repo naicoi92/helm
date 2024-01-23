@@ -2,6 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Release.Name }}
+  labels:
+    io.portainer.kubernetes.application.name: {{ .Release.Name }}
+    io.portainer.kubernetes.application.owner: admin
+    io.portainer.kubernetes.application.stack: {{ .Release.Name }}
 spec:
   selector:
     app: {{ .Release.Name }}
