@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}
   labels:
-    app: {{ .Release.Name }}
-  labels:
     io.portainer.kubernetes.application.name: {{ .Release.Name }}
     io.portainer.kubernetes.application.owner: admin
     io.portainer.kubernetes.application.stack: {{ .Release.Name }}
