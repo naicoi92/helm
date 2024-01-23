@@ -28,7 +28,7 @@ spec:
               protocol: TCP
           volumeMounts:
             - name: data
-              mountPath: /var/www/html
+              mountPath: /app/public
               subPath: web
           envFrom:
             - secretRef:
