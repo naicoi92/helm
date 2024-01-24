@@ -46,7 +46,7 @@ spec:
               subPath: web
           envFrom:
             - secretRef:
-                name: secret-{{ .Release.Name }}
+                name: secret-{{ .Release.Name }}-wordpress
         - name: database
           image: mariadb:11.1
           args: ["--skip-log-bin"]
@@ -77,6 +77,6 @@ spec:
               subPath: sql
           envFrom:
             - secretRef:
-                name: secret-{{ .Release.Name }}
+                name: secret-{{ .Release.Name }}-database
   strategy:
     type: Recreate
