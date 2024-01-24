@@ -20,7 +20,7 @@ spec:
             claimName: volume-claim-{{ .Release.Name }}
       containers:
         - name: wordpress
-          image: lttech/frankenphp
+          image: lttech/frankenphp:8.3.1
           imagePullPolicy: Always
           ports:
             - name: http
