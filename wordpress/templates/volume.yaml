@@ -10,6 +10,6 @@ spec:
   hostPath:
     path: /wordpress/{{ .Release.Name }}
     type: DirectoryOrCreate
-  persistentVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Recycle
   storageClassName: local-path
   volumeMode: Filesystem
