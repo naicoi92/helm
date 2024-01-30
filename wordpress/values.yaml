@@ -3,8 +3,5 @@
 # Declare variables to be passed into your templates.
 
 # core - need restart deployment
-password: random_password_32_chars # change at first time only
-debug: false # true for debug
-domain: true # true for multi domain at same time
-update: false # true for auto update wordpress core
+password: random_password_32_chars
 storage: 5Gi

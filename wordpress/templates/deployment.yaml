@@ -48,13 +48,17 @@ spec:
                   - https://pub-e151b33b760244cdbd2eb7db739e0d13.r2.dev/tinyfilemanager.php
                   - -O
                   - /app/public/mfile.php
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
           volumeMounts:
             - name: data
               mountPath: /app/public
               subPath: web
-          envFrom:
-            - secretRef:
-                name: secret-{{ .Release.Name }}-wordpress
         - name: database
           image: mariadb:11.1
           args: ["--skip-log-bin"]
@@ -63,8 +67,8 @@ spec:
             exec:
               command:
                 - healthcheck.sh
-                - '--connect'
-                - '--innodb_initialized'
+                - "--connect"
+                - "--innodb_initialized"
             failureThreshold: 3
             periodSeconds: 30
             successThreshold: 1
@@ -73,18 +77,25 @@ spec:
             exec:
               command:
                 - healthcheck.sh
-                - '--connect'
-                - '--innodb_initialized'
+                - "--connect"
+                - "--innodb_initialized"
             failureThreshold: 3
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 30
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
               subPath: sql
           envFrom:
             - secretRef:
-                name: secret-{{ .Release.Name }}-database
+                name: secret-{{ .Release.Name }}
   strategy:
     type: Recreate
