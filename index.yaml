@@ -3,7 +3,7 @@ entries:
   techio-prisma-engine:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-31T18:07:07.642057+07:00"
+    created: "2024-01-31T19:03:55.337986+07:00"
     description: A Helm chart for Prisma Engines
     digest: 9dfe9b08fe50349604efb1ccaab57fcbd5646e91b0c0b592b8ce873eeecea7d7
     name: techio-prisma-engine
@@ -14,7 +14,7 @@ entries:
   techio-rclone:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-31T18:07:07.642614+07:00"
+    created: "2024-01-31T19:03:55.338519+07:00"
     description: A Helm chart for rclone
     digest: 34218479069a1bbab51bd2dad0b9a5ba7d35f2b317a960eca542ab6958b80364
     name: techio-rclone
@@ -25,7 +25,7 @@ entries:
   techio-squid:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-31T18:07:07.643235+07:00"
+    created: "2024-01-31T19:03:55.339153+07:00"
     description: A Helm chart for rclone
     digest: 36fba9c26ac433cc0bad841fb28ae514c09a5ba95b12c819ea780a114a1c2764
     name: techio-squid
@@ -35,7 +35,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-01-31T18:07:07.642864+07:00"
+    created: "2024-01-31T19:03:55.338844+07:00"
     description: A Helm chart for rclone
     digest: 197c2d6a75ac2f092a50ee3796a87b386eaab19aec4fb6eb0d6d7ee669fe16da
     name: techio-squid
@@ -46,7 +46,17 @@ entries:
   techio-wordpress:
   - apiVersion: v2
     appVersion: 8.3.1
-    created: "2024-01-31T18:07:07.646052+07:00"
+    created: "2024-01-31T19:03:55.342256+07:00"
+    description: A Helm chart for Wordpress
+    digest: 971357b3b89f5cf7932af43f6ee0aee394c44949a8abe62e71a4784af6351641
+    name: techio-wordpress
+    type: application
+    urls:
+    - https://naicoi92.github.io/helm/techio-wordpress-0.8.15.tgz
+    version: 0.8.15
+  - apiVersion: v2
+    appVersion: 8.3.1
+    created: "2024-01-31T19:03:55.342144+07:00"
     description: A Helm chart for Wordpress
     digest: 9e580141d7c81af694d41b4fa31a8c87ce63499733114ec10673a2665cbfc2b6
     name: techio-wordpress
@@ -56,7 +66,7 @@ entries:
     version: 0.8.14
   - apiVersion: v2
     appVersion: 8.3.1
-    created: "2024-01-31T18:07:07.645923+07:00"
+    created: "2024-01-31T19:03:55.341924+07:00"
     description: A Helm chart for Wordpress
     digest: e2a819196632dbe0e942068b9f1bb2b7ee732553cc8efb7ace6ff25d510e98b5
     name: techio-wordpress
@@ -66,7 +76,7 @@ entries:
     version: 0.8.13
   - apiVersion: v2
     appVersion: 8.3.1
-    created: "2024-01-31T18:07:07.64558+07:00"
+    created: "2024-01-31T19:03:55.341601+07:00"
     description: A Helm chart for Wordpress
     digest: 36965f93a25491e81e33fb57c2b919861c1134c159f5ff4bd0c6ac8e2057aee7
     name: techio-wordpress
@@ -76,7 +86,7 @@ entries:
     version: 0.8.12
   - apiVersion: v2
     appVersion: 8.3.1
-    created: "2024-01-31T18:07:07.645339+07:00"
+    created: "2024-01-31T19:03:55.341278+07:00"
     description: A Helm chart for Wordpress
     digest: d96ecf0ea8e8ab6495bbdc6e75640e10a4ca850f711a32d91eeee026cb633fcc
     name: techio-wordpress
@@ -86,7 +96,7 @@ entries:
     version: 0.8.11
   - apiVersion: v2
     appVersion: 8.3.1
-    created: "2024-01-31T18:07:07.644972+07:00"
+    created: "2024-01-31T19:03:55.340922+07:00"
     description: A Helm chart for Wordpress
     digest: a44eedb59d1f0334ad479c3156a3f8337405faa7d0702f8abdb34bd32788ea63
     name: techio-wordpress
@@ -96,7 +106,7 @@ entries:
     version: 0.8.10
   - apiVersion: v2
     appVersion: 8.3.1
-    created: "2024-01-31T18:07:07.647451+07:00"
+    created: "2024-01-31T19:03:55.342607+07:00"
     description: A Helm chart for Wordpress
     digest: fb449245d678a0717b0a1df20026091d6faeed9c6ca7f4dc5d45f8e3ecb42b66
     name: techio-wordpress
@@ -106,7 +116,7 @@ entries:
     version: 0.8.9
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-01-31T18:07:07.64464+07:00"
+    created: "2024-01-31T19:03:55.340609+07:00"
     description: A Helm chart for Wordpress
     digest: 89a902339008f86dfda6d53da95e4d85088882f54aedc7a478639adc5f2e5911
     name: techio-wordpress
@@ -116,7 +126,7 @@ entries:
     version: 0.7.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-01-31T18:07:07.644385+07:00"
+    created: "2024-01-31T19:03:55.3402+07:00"
     description: A Helm chart for Wordpress
     digest: 12179e8692e71417b6614d3c6d517fb27e47cec19259d27c6f34a899606885e3
     name: techio-wordpress
@@ -126,7 +136,7 @@ entries:
     version: 0.6.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-01-31T18:07:07.644021+07:00"
+    created: "2024-01-31T19:03:55.339783+07:00"
     description: A Helm chart for Wordpress
     digest: f240f37729b724a87f2a2ce7161acc0e1d3529cee68c0401c6ac45ba107b3cd2
     name: techio-wordpress
@@ -136,7 +146,7 @@ entries:
     version: 0.4.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-01-31T18:07:07.643628+07:00"
+    created: "2024-01-31T19:03:55.339511+07:00"
     description: A Helm chart for Wordpress
     digest: 03dfeeded7a57d08d83c9863991626a0d2fcf7d9e734355dcc1a1447d8a9cc49
     name: techio-wordpress
@@ -144,4 +154,4 @@ entries:
     urls:
     - https://naicoi92.github.io/helm/techio-wordpress-0.4.0.tgz
     version: 0.4.0
-generated: "2024-01-31T18:07:07.641173+07:00"
+generated: "2024-01-31T19:03:55.336774+07:00"
