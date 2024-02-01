@@ -50,11 +50,11 @@ spec:
                   - /app/public/mfile.php
           resources:
             requests:
-              memory: "768Mi"
-              cpu: "400m"
+              memory: "1Gi"
+              cpu: "500m"
             limits:
-              memory: "1536Mi"
-              cpu: "800m"
+              memory: "2Gi"
+              cpu: "1"
           volumeMounts:
             - name: data
               mountPath: /app/public
@@ -85,11 +85,11 @@ spec:
             timeoutSeconds: 30
           resources:
             requests:
-              memory: "768Mi"
-              cpu: "400m"
+              memory: "1Gi"
+              cpu: "500m"
             limits:
-              memory: "1536Mi"
-              cpu: "800m"
+              memory: "2Gi"
+              cpu: "1"
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
