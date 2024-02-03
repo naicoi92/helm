@@ -20,7 +20,11 @@ spec:
             claimName: volume-claim-{{ .Release.Name }}
       containers:
         - name: wordpress
+          {{ if .Values.ioncube }}
+          image: lttech/wordpress:php7.4-ioncube
+          {{ else }}
           image: lttech/frankenphp:8.3.1
+          {{ end }}
           imagePullPolicy: Always
           ports:
             - name: http
@@ -40,6 +44,7 @@ spec:
             periodSeconds: 15
             successThreshold: 1
             timeoutSeconds: 3
+          {{- if not .Values.ioncube }}
           lifecycle:
             postStart:
               exec:
@@ -48,16 +53,22 @@ spec:
                   - https://pub-e151b33b760244cdbd2eb7db739e0d13.r2.dev/tinyfilemanager.php
                   - -O
                   - /app/public/mfile.php
+          
+          {{- end }}
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "500m"
+              memory: "{{ mul .Values.scale 512 }}Mi"
+              cpu: "{{ mul .Values.scale 250 }}m"
             limits:
-              memory: "2Gi"
-              cpu: "1"
+              memory: "{{ mul .Values.scale 1 }}Gi"
+              cpu: "{{ mul .Values.scale 500 }}m"
           volumeMounts:
             - name: data
+              {{ if .Values.ioncube }}
+              mountPath: /var/www/html
+              {{ else }}
               mountPath: /app/public
+              {{ end }}
               subPath: web
         - name: database
           image: mariadb:11.1
@@ -85,11 +96,11 @@ spec:
             timeoutSeconds: 30
           resources:
             requests:
-              memory: "1Gi"
-              cpu: "500m"
+              memory: "{{ mul .Values.scale 512 }}Mi"
+              cpu: "{{ mul .Values.scale 250 }}m"
             limits:
-              memory: "2Gi"
-              cpu: "1"
+              memory: "{{ mul .Values.scale 1 }}Gi"
+              cpu: "{{ mul .Values.scale 500 }}m"
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql

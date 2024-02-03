@@ -5,3 +5,5 @@
 # core - need restart deployment
 password: random_password_32_chars
 storage: 5Gi
+scale: 2
+ioncube: false
