@@ -53,11 +53,12 @@ spec:
                   - https://pub-e151b33b760244cdbd2eb7db739e0d13.r2.dev/tinyfilemanager.php
                   - -O
                   - /app/public/mfile.php
+          
           {{- end }}
           resources:
             requests:
-              memory: "{{ mul .Values.scale 820 }}Mi"
-              cpu: "{{ mul .Values.scale 400 }}m"
+              memory: "{{ mul .Values.scale 512 }}Mi"
+              cpu: "{{ mul .Values.scale 250 }}m"
             limits:
               memory: "{{ mul .Values.scale 1 }}Gi"
               cpu: "{{ mul .Values.scale 500 }}m"
@@ -95,8 +96,8 @@ spec:
             timeoutSeconds: 30
           resources:
             requests:
-              memory: "{{ mul .Values.scale 820 }}Mi"
-              cpu: "{{ mul .Values.scale 400 }}m"
+              memory: "{{ mul .Values.scale 512 }}Mi"
+              cpu: "{{ mul .Values.scale 250 }}m"
             limits:
               memory: "{{ mul .Values.scale 1 }}Gi"
               cpu: "{{ mul .Values.scale 500 }}m"
