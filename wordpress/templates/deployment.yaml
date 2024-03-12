@@ -55,6 +55,7 @@ spec:
                   - /app/public/mfile.php
           
           {{- end }}
+          {{ if .Values.scale }}
           resources:
             requests:
               memory: "{{ mul .Values.scale 512 }}Mi"
@@ -62,6 +63,7 @@ spec:
             limits:
               memory: "{{ mul .Values.scale 1 }}Gi"
               cpu: "{{ mul .Values.scale 500 }}m"
+          {{ end }}
           volumeMounts:
             - name: data
               {{ if .Values.ioncube }}
@@ -94,6 +96,7 @@ spec:
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 30
+          {{ if .Values.scale }}
           resources:
             requests:
               memory: "{{ mul .Values.scale 512 }}Mi"
@@ -101,6 +104,7 @@ spec:
             limits:
               memory: "{{ mul .Values.scale 1 }}Gi"
               cpu: "{{ mul .Values.scale 500 }}m"
+          {{ end }}
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
